@@ -1,0 +1,25 @@
+%p#notice= notice
+
+%h1
+  = @character.name
+= image_tag(@character.avatar.url(:medium), :class => :avatar)
+%p
+  = @character.description
+-if not @character.roles.empty?
+  %h2 Roles
+  %dl
+    -for s in @character.roles
+      %dt= s.story.title
+      %dd= s.role
+-if not @character.relations.empty?
+  %h2 Relations
+  %table
+    -@character.relations.each do |rel|
+      %tr
+        %td= link_to rel.towards.name, character_path(rel.towards)
+        %td= rel.short
+        %td= rel.description
+
+= link_to 'Edit', edit_character_path(@character)
+\|
+= link_to 'Back', characters_path

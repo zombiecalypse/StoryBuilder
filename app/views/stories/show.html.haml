@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @story.title
+%p
+  %b Description:
+  = @story.description
+%p
+  %b Mood:
+  = @story.mood
+
+= link_to 'Edit', edit_story_path(@story)
+\|
+= link_to 'Back', stories_path

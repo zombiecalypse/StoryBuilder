@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  character: 
+  story: 
+  role: MyString
+  description: MyText
+
+two:
+  character: 
+  story: 
+  role: MyString
+  description: MyText
