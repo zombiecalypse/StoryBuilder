@@ -1,3 +1,13 @@
 = semantic_form_for @story do |f|
-  = f.inputs
+  = f.inputs do
+    = f.input :title
+    = f.input :description
+    = f.input :mood
+    = f.input :superplot, :collection => Story.all_but(@story)
+    = f.input :picture, :as => :file
   = f.buttons
+%h2 Roles
+-for role in @story.roles
+  = semantic_form_for role do |f|
+    =f.inputs
+    =f.buttons

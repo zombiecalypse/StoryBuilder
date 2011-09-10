@@ -1,0 +1,9 @@
+%h1 
+  Editing relation for 
+  = @character.name
+
+= render 'form'
+
+= link_to 'Show', @relation
+\|
+= link_to 'Back', character_relations_path(@character)

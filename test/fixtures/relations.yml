@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
 
 one:
-  first: 
-  second: 
+  character: 
+  towards: 
   short: MyString
   description: MyText
 
 two:
-  first: 
-  second: 
+  character: 
+  towards: 
   short: MyString
   description: MyText

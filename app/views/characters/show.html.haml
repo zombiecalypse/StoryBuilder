@@ -2,9 +2,12 @@
 
 %h1
   = @character.name
-= image_tag(@character.avatar.url(:medium), :class => :avatar)
-%p
-  = @character.description
+#avatar= image_tag(@character.avatar.url(:medium), :class => :avatar)
+
+%h2 Description
+#description
+  :markdown
+    #{@character.description}
 -if not @character.roles.empty?
   %h2 Roles
   %dl
@@ -13,12 +16,13 @@
       %dd= s.role
 -if not @character.relations.empty?
   %h2 Relations
-  %table
-    -@character.relations.each do |rel|
-      %tr
-        %td= link_to rel.towards.name, character_path(rel.towards)
-        %td= rel.short
-        %td= rel.description
+  #graph= image_tag(graph_character_path(@character), :alt => "Character connection graph")
+  -@character.relations.each do |rel|
+    %h3
+      = link_to rel.towards.name, character_path(rel.towards)
+      &mdash;
+      = rel.short
+    %p= rel.description
 
 = link_to 'Edit', edit_character_path(@character)
 \|

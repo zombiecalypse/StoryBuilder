@@ -21,6 +21,16 @@ class StoriesController < ApplicationController
     end
   end
 
+  def new_role
+    @story = Story.find(params[:story_id])
+    @role = @story.roles.create
+    
+    respond_to do |format|
+      format.html
+      format.json {render json: @role}
+    end
+  end
+
   # GET /stories/new
   # GET /stories/new.json
   def new

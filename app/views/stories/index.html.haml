@@ -2,6 +2,7 @@
 
 %table
   %tr
+    %th
     %th Title
     %th Mood
     %th
@@ -10,6 +11,7 @@
 
   - @stories.each do |story|
     %tr
+      %td= image_tag(story.picture.url(:thumb))
       %td= story.title
       %td= story.mood
       %td= link_to 'Show', story

@@ -6,8 +6,8 @@
     = csrf_meta_tags
   %body
     %nav
-      = link_to "Stories", stories_path
-      = link_to "Characters", characters_path
-      = link_to "Locations", locations_path
+      = link_to_unless_current "Stories", stories_path
+      = link_to_unless_current "Characters", characters_path
+      = link_to_unless_current "Locations", locations_path
     %article#main
       = yield

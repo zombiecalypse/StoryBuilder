@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Character:
+  = @role.character
+%p
+  %b Story:
+  = @role.story
+%p
+  %b Role:
+  = @role.role
+%p
+  %b Description:
+  = @role.description
+
+= link_to 'Edit', edit_story_role_path(@story, @role)
+\|
+= link_to 'Back', story_roles_path(@story)

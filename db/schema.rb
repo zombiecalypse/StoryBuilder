@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110903142144) do
+ActiveRecord::Schema.define(:version => 20110909212313) do
 
 # Could not dump table "characters" because of following StandardError
 #   Unknown type 'reference' for column 'image'
@@ -56,6 +56,11 @@ ActiveRecord::Schema.define(:version => 20110903142144) do
     t.string   "mood"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "superplot_id"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
 end

@@ -1,11 +1,15 @@
 StoryBuilder::Application.routes.draw do
+
   resources :locations
 
-  resources :characters
+  resources :characters do 
+    resources :relations
+    get 'graph', :on => :member, :defaults => { :format => 'png' }
+  end
 
-  resources :stories
-
-  match 'images/:id' => 'image#show'
+  resources :stories do
+    resources :roles
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

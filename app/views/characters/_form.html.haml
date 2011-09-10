@@ -1,7 +1,6 @@
-= semantic_form_for @character do |f|
+= semantic_form_for @character, :name => "Basic" do |f|
   = f.inputs do
     = f.input :name
     = f.input :description
     = f.input :avatar, :as => :file
   = f.buttons
-%h2 Relations

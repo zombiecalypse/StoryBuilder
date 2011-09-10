@@ -1,3 +1,4 @@
+require 'graphviz_r'
 class CharactersController < ApplicationController
   # GET /characters
   # GET /characters.json
@@ -79,5 +80,19 @@ class CharactersController < ApplicationController
       format.html { redirect_to characters_url }
       format.json { head :ok }
     end
+  end
+
+  def graph
+    character = Character.find(params[:id])
+    g = GraphvizR.new character.name
+    g[character.id][:label => character.name, :color => 'red']
+    for rel in character.relations
+      g[rel.towards.id][:label => rel.towards.name]
+      (g[character.id] >> g[rel.towards.id]) [:label => rel.short]
+    end
+    send_data g.data(params[:format]), 
+      :type => 'image/png', 
+      :filename => "graph.png", 
+      :disposition => 'inline'
   end
 end

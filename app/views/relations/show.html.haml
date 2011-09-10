@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Character:
+  = @relation.character
+%p
+  %b Towards:
+  = @relation.towards
+%p
+  %b Short:
+  = @relation.short
+%p
+  %b Description:
+  = @relation.description
+
+= link_to 'Edit', edit_character_relation_path(@character, @relation)
+\|
+= link_to 'Back', character_relations_path(@character)

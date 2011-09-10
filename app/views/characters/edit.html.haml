@@ -2,6 +2,18 @@
 
 = render 'form'
 
+%h2 Relations
+-for char in Character.all_but(@character)
+  -rel = Relation.find_or_initialize_by_character_id_and_towards_id(@character.id,char.id)
+  = semantic_form_for [@character,rel] do |f|
+    %h3= char.name
+    = f.inputs do 
+      =f.input :character, :include_blank => false
+      =f.input :towards, :include_blank => false
+      =f.input :short
+      =f.input :description
+    = f.buttons
+
 = link_to 'Show', @character
 \|
 = link_to 'Back', characters_path

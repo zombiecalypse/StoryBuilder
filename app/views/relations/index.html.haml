@@ -1,0 +1,23 @@
+%h1 
+  Listing relations of 
+  =@character.name
+
+%table
+  %tr
+    %th Towards
+    %th Short
+    %th
+    %th
+    %th
+
+  - @relations.each do |relation|
+    %tr
+      %td= relation.towards.name
+      %td= relation.short
+      %td= link_to 'Show', [@character, relation]
+      %td= link_to 'Edit', edit_character_relation_path(@character,relation)
+      %td= link_to 'Destroy', [@character, relation], :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Relation', new_character_relation_path(@character)

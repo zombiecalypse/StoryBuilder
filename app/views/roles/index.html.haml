@@ -1,0 +1,27 @@
+%h1 
+  Listing roles of 
+  %q=@story.title
+
+%table
+  %tr
+    %th Character
+    %th Story
+    %th Role
+    %th Description
+    %th
+    %th
+    %th
+
+  - @roles.each do |role|
+    %tr
+      %td= role.character
+      %td= role.story
+      %td= role.role
+      %td= role.description
+      %td= link_to 'Show', role
+      %td= link_to 'Edit', edit_story_role_path(@story,role)
+      %td= link_to 'Destroy', role, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Role', new_story_role_path(@story)
