@@ -8,3 +8,19 @@
 #description {
   margin-left: 2em;
 }
+section.listing {
+  clear:both;
+  margin-bottom:1em;
+  img {
+    margin:1em;
+    width:100px;
+    height:100px;
+    float:left;
+  }
+  section {
+    clear:both;
+  }
+}
+hr.nav {
+  clear:both;
+}

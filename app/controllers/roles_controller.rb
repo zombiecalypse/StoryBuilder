@@ -49,8 +49,8 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       if @role.save
-        format.html { redirect_to @role, notice: 'Role was successfully created.' }
-        format.json { render json: @role, status: :created, location: @role }
+        format.html { redirect_to [@story, @role], notice: 'Role was successfully created.' }
+        format.json { render json: [@story, @role], status: :created, location: [@story, @role] }
       else
         format.html { render action: "new" }
         format.json { render json: @role.errors, status: :unprocessable_entity }
@@ -65,7 +65,7 @@ class RolesController < ApplicationController
 
     respond_to do |format|
       if @role.update_attributes(params[:role])
-        format.html { redirect_to @role, notice: 'Role was successfully updated.' }
+        format.html { redirect_to [@story, @role], notice: 'Role was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -81,7 +81,7 @@ class RolesController < ApplicationController
     @role.destroy
 
     respond_to do |format|
-      format.html { redirect_to roles_url }
+      format.html { redirect_to story_roles_url(@story) }
       format.json { head :ok }
     end
   end

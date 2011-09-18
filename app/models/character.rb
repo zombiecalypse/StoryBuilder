@@ -12,4 +12,8 @@ class Character < ActiveRecord::Base
   def to_s
     name
   end
+
+  def shortness_threshold
+    200
+  end
 end

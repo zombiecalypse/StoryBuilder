@@ -1,8 +1,20 @@
 // Place all the styles related to the Characters controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.avatar {
+
+@mixin round-corners($amount) {
+  border-radius: $amount;
+  -moz-border-radius: $amount;
+  -webkit-border-radius: $amount;
+}
+
+#avatar {
   float:right;
+  @include round-corners(5px)
+}
+#graph {
+  float:right;
+  clear:both;
 }
 #description {
   margin-left: 2em;

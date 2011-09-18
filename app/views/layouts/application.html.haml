@@ -1,13 +1,21 @@
 %html
   %head
-    %title StoryBuilder
+    %title 
+      StoryBuilder &mdash;
+      = yield :title
     = stylesheet_link_tag    "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
+    %header
+      %h1= yield :title
     %nav
-      = link_to_unless_current "Stories", stories_path
-      = link_to_unless_current "Characters", characters_path
-      = link_to_unless_current "Locations", locations_path
-    %article#main
-      = yield
+      %ul
+        %li= link_to_unless_current "Stories", stories_path
+        %li= link_to_unless_current "Characters", characters_path
+        %li= link_to_unless_current "Locations", locations_path
+    #main
+      %article
+        = yield
+      %aside
+        =yield :sidebar

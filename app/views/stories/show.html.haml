@@ -1,3 +1,4 @@
+-title @story.title
 %p#notice= notice
 
 %h1= @story.title
@@ -6,11 +7,30 @@
   = @story.mood
 = image_tag(@story.picture.url(:medium), :class => :picture)
 
-%h2 Description
-#description
-  :markdown
-    #{@story.description}
-
+%section#description
+  %h1 Description
+  %div
+    :markdown
+      #{@story.description}
+%section
+  %h1 Subplots
+  %ul
+    -for child in @story.subplots
+      %li= link_to child.title, child
+%section#roles
+  %h1 Roles
+  -for role in @story.roles
+    %section
+      %h1
+        = link_to role.character, [@story,role]
+        &mdash;
+        = role.role
+      =role.description
+      %nav
+        = link_to 'Edit', edit_story_role_path(@story, role)
+        = link_to 'Destroy', [@story, role], :confirm => 'Are you sure?', :method => :delete
+  = link_to 'New Role', new_story_role_path(@story)
+%hr
 = link_to 'Edit', edit_story_path(@story)
 \|
 = link_to 'Back', stories_path

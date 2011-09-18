@@ -1,0 +1,48 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree . 
+*/
+
+/*
+ *= require formtastic.css
+ */
+header {
+  width: 100%;
+  h1 {
+    font-variant:small-caps;
+    font-weight:lighter;
+    font-size: 4em;
+    letter-spacing:0.5em;
+  }
+}
+nav {
+  width: 100%;
+  ul {
+    list-style-type:none;
+    li {
+      font-variant:small-caps;
+      font-weight:bold;
+      display:inline;
+    }
+  }
+}
+section {
+  margin-left: 1em;
+}
+#main {
+  display:table;
+  aside {
+    display:table-cell;
+    width:20em;
+  }
+  article {
+    display:table-cell;
+    width: 50em;
+    padding-right:5em;
+    padding-left:5em;
+    padding-top:3em;
+  }
+}

@@ -6,8 +6,3 @@
     = f.input :superplot, :collection => Story.all_but(@story)
     = f.input :picture, :as => :file
   = f.buttons
-%h2 Roles
--for role in @story.roles
-  = semantic_form_for role do |f|
-    =f.inputs
-    =f.buttons

@@ -1,28 +1,30 @@
 %p#notice= notice
 
-%h1
-  = @character.name
+-title @character.name
+%h1= @character.name
 #avatar= image_tag(@character.avatar.url(:medium), :class => :avatar)
 
-%h2 Description
-#description
+%section#description
+  %h1 Description
   :markdown
     #{@character.description}
 -if not @character.roles.empty?
-  %h2 Roles
-  %dl
-    -for s in @character.roles
-      %dt= s.story.title
-      %dd= s.role
+  %section
+    %h1 Roles
+    %dl
+      -for s in @character.roles
+        %dt= s.story.title
+        %dd= s.role
 -if not @character.relations.empty?
-  %h2 Relations
-  #graph= image_tag(graph_character_path(@character), :alt => "Character connection graph")
-  -@character.relations.each do |rel|
-    %h3
-      = link_to rel.towards.name, character_path(rel.towards)
-      &mdash;
-      = rel.short
-    %p= rel.description
+  %section
+    %h1 Relations
+    = image_tag(graph_character_path(@character), :alt => "Character connection graph", :id=>'graph')
+    -@character.relations.each do |rel|
+      %h3
+        = link_to rel.towards.name, character_path(rel.towards)
+        &mdash;
+        = rel.short
+      %p= rel.description
 
 = link_to 'Edit', edit_character_path(@character)
 \|

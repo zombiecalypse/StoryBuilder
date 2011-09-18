@@ -1,23 +1,19 @@
-%h1 Listing stories
-
-%table
-  %tr
-    %th
-    %th Title
-    %th Mood
-    %th
-    %th
-    %th
-
-  - @stories.each do |story|
-    %tr
-      %td= image_tag(story.picture.url(:thumb))
-      %td= story.title
-      %td= story.mood
-      %td= link_to 'Show', story
-      %td= link_to 'Edit', edit_story_path(story)
-      %td= link_to 'Destroy', story, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
+-title 'Stories'
+- @stories.each do |story|
+  %section.listing
+    %h1= link_to story.title, story
+    = image_tag(story.picture.url(:thumb))
+    .text
+      -if story.mood.present?
+        .mood
+          %b Mood:
+          = story.mood
+      =truncate(story.description, :length => story.shortness_threshold, :separator => ' ', :omission => '…')
+    %section
+      -if not story.subplots.empty?
+        %h1 Subplots
+        %ul
+          - story.subplots.each do |subplot|
+            %li= link_to subplot.title, subplot
+%hr.nav
 = link_to 'New Story', new_story_path
