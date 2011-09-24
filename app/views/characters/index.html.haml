@@ -7,9 +7,6 @@
     =image_tag character.avatar.url(:thumb)
     :markdown
       #{truncate(character.description, :length => character.shortness_threshold, :separator => ' ', :omission => '…')}
-    .crud
-      = link_to 'Edit', edit_character_path(character)
-      = link_to 'Destroy', character, :confirm => 'Are you sure?', :method => :delete
 
 %hr.nav
 = link_to 'New Character', new_character_path
